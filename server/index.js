@@ -12,7 +12,11 @@ const app = express();
 
 massive( process.env.CONNECTIONSTRING ).then( dbInstance => {
   app.set('db', dbInstance);
-}).catch( err => console.log('Error connecting to database:', err) );
+  //Sets up tables in DB.
+  app.get('db').initialize_db().then(response => {
+      console.log(response)
+  })
+})
 
 
 //MIDDLEWARE
