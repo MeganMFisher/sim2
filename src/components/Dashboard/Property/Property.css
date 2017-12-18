@@ -1,0 +1,76 @@
+.Property__container {
+  border: none;
+  height: 150px;
+  width: 98%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  display: flex;
+  flex: 1;
+}
+
+.Property__image_container {
+  height: 100%;
+  width: 150px;
+}
+
+.Property__image {
+  width: 100%;
+  height: 100%;
+}
+
+.Property__dd_container {
+  width: calc( 100% - 150px );
+  height: 100%;
+  display: flex;
+}
+
+.Property__description_parent {
+  height: 100%;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.Property__description_child {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.Property__description_name {
+  margin-bottom: 5px;
+}
+
+.Property__detail_parent {
+  height: 100%;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-left: 0px;
+  position: relative;
+}
+
+.Property__detail_child {
+  width: 97%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border-left: 1px solid black;
+  padding-left: 10px;
+}
+
+.Property__btn_delete {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.Header__parent {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 75px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header__child {
+  width: 50%;
+  min-width: 759px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px 20px;
+}
+
+.Header__left_container {
+  display: flex;
+  align-items: center;
+}
+
+.Header__left_span {
+  color: white;
+  margin-left: 10px;
+  font-size: 30px;
+}
+
+.Header__right_span {
+  color: white;
+  cursor: pointer;
+}
