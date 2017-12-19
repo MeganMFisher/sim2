@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const user_controller = require('./controllers/user_controller')
 const property_controller = require('./controllers/property_controller')
+const auth = require(`./middlewares/auth`);
 require('dotenv').config();
 
 const app = express();
@@ -37,12 +38,12 @@ app.post('/api/auth/register', user_controller.register);
 app.post('/api/auth/logout', user_controller.logout);
 
 
-app.use( require(`./middlewares/auth`) );
+
 // PROPERTY LISTINGS ENDPOINTS
-app.post('/api/properties/', property_controller.create);
-app.get('/api/properties/', property_controller.readAll);
-app.delete('/api/properties/:id', property_controller.delete);
-app.get('/api/properties/filter', property_controller.filter);
+app.post('/api/properties/', auth, property_controller.create);
+app.get('/api/properties/', auth, property_controller.readAll);
+app.delete('/api/properties/:id', auth, property_controller.delete);
+app.get('/api/properties/filter', auth, property_controller.filter);
 
 
 app.listen( process.env.PORT, () => { console.log(`Server listening on port ${ process.env.PORT}`); } );
