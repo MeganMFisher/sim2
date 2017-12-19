@@ -1,15 +1,13 @@
-
-CREATE TABLE IF NOT EXISTS Users ( UserId SERIAL PRIMARY KEY, Username TEXT);
-
--- Alter the users table here: 
-ALTER TABLE Users 
-ADD Password TEXT;
-
-INSERT INTO Users ( Username, Password ) VALUES ( 'test', 'test' );
+-- Add the users table here:
+CREATE TABLE Users ( 
+  UserId SERIAL PRIMARY KEY, 
+  Username TEXT UNIQUE, 
+  Password TEXT
+  );
 
 
 -- Add the properties table here: 
-CREATE TABLE IF NOT EXISTS Properties (
+CREATE TABLE Properties (
   PropertyId SERIAL PRIMARY KEY,
   UserId INT,
   Name TEXT,

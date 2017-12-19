@@ -60,4 +60,12 @@ class Dashboard extends Component {
   }
 }
 
-export default connect( state => ({ user: state.user, properties: state.properties }), { logout, getProperties, deleteProperty, filterProperties } )( Dashboard );
+function mapStateToProps(state) {
+  const { user, properties } = state;
+  return {
+    user,
+    properties
+  }
+}
+
+export default connect( mapStateToProps, { logout, getProperties, deleteProperty, filterProperties } )( Dashboard );

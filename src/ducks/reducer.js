@@ -25,10 +25,17 @@ const LOGOUT = "LOGOUT";
 const GET_PROPERTIES = "GET_PROPERTIES";
 const CREATE_PROPERTY = "CREATE_PROPERTY";
 const DELETE_PROPERTY = "DELETE_PROPERTY";
+
+// filterProperties: 
 const FILTER_PROPERTIES = "FILTER_PROPERTIES";
 
+// updateWizard: 
 const UPDATE_WIZARD = "UPDATE_WIZARD";
+
+// resetWizard: 
 const RESET_WIZARD = "RESET_WIZARD";
+
+
 
 export default ( state = initialState, action ) => {
   const { payload } = action;
@@ -43,10 +50,10 @@ export default ( state = initialState, action ) => {
     case LOGOUT + '_FULFILLED':
       return Object.assign({}, initialState);
 
-    case CREATE_PROPERTY + '_FULFILLED':
+    case GET_PROPERTIES + '_FULFILLED':
       return Object.assign({}, state, { properties: payload });
 
-    case GET_PROPERTIES + '_FULFILLED':
+    case CREATE_PROPERTY + '_FULFILLED':
       return Object.assign({}, state, { properties: payload });
 
     case GET_PROPERTIES + '_REJECTED':
@@ -55,9 +62,12 @@ export default ( state = initialState, action ) => {
     case DELETE_PROPERTY + '_FULFILLED':
       return Object.assign({}, state, { properties: payload });
 
+    // filterProperties case: 
     case FILTER_PROPERTIES + '_FULFILLED':
       return Object.assign({}, state, { properties: payload });
 
+
+    // updateWizard case:
     case UPDATE_WIZARD: {
       let newState = Object.assign({}, state);
       for( var i in payload ) {
@@ -66,6 +76,7 @@ export default ( state = initialState, action ) => {
       return newState;
     }
 
+    // resetWizard case:
     case RESET_WIZARD: {
       let newState = Object.assign({}, state);
       for( var j in newState.wizard ) {
@@ -144,6 +155,7 @@ export function deleteProperty( id ) {
   };
 }
 
+//filterProperties Action Creator: 
 export function filterProperties( amount ) {
   const promise = axios.get( `/api/properties/filter?amount=${amount}` ).then( response => response.data );
 
@@ -153,6 +165,7 @@ export function filterProperties( amount ) {
   };
 }
 
+// upddateWizard Action Creator: 
 export function updateWizard( obj ) {
   return {
     type: UPDATE_WIZARD,
@@ -160,6 +173,7 @@ export function updateWizard( obj ) {
   };
 }
 
+// resetWizard Action Creator: 
 export function resetWizard() {
   return {
     type: RESET_WIZARD,
