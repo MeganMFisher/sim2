@@ -37,13 +37,10 @@ app.post('/api/auth/login', user_controller.login);
 app.post('/api/auth/register', user_controller.register);
 app.post('/api/auth/logout', user_controller.logout);
 
-
-
 // PROPERTY LISTINGS ENDPOINTS
 app.post('/api/properties/', auth, property_controller.create);
 app.get('/api/properties/', auth, property_controller.readAll);
 app.delete('/api/properties/:id', auth, property_controller.delete);
 app.get('/api/properties/filter', auth, property_controller.filter);
-
 
 app.listen( process.env.PORT, () => { console.log(`Server listening on port ${ process.env.PORT}`); } );
