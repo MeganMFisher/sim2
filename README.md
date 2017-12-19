@@ -45,9 +45,41 @@
 
 ### Reducer: 
 
-* The reducer has been setup already so we will just be adding to it in the next steps. 
+* The reducer has been setup already so we will just be adding to it,
+
+* Add three action types filter_properties, update_wizard, reset_wizard. 
+
+* The filter_properties action creator needs to take in an amount, make an get request to '/api/properties/filter' sending a query where the key is `amount` and the value is the amount parameter passed into the action creator. The response from the db will be the payload. 
+
+* The filter_properties case in the reducer needs to take into account that there is a promise in the action creator. Then return a new object changes just the properties key on state to equal the payload.
+
+* The update_wizard action creator needs to take in an obj and put that object onto the payload. 
+
+* The update_wizard case in the reducer needs to make a new copy of state into a newState variable. Then for loop over the payload object and assign newState.wizard[i] equal to the payload[i]. Then returns newState.
+
+* Then reset_wizard action creator only needs a payload of null to reset the wizard object on state.
+
+* The reset_wizard case in the reducer needs to make a new copy of state into a newState variable. Then for loop over the newState.wizard object and assign newState.wizard[i] = null. Then returns newState.
 
 
 ### Dashboard Component: 
 
-* 
+* Needs to be able to access the users and properties on state in the reducer. 
+
+* connect the logout, getProperties, deleteProperty, filterProperties action creators to the dashboard component. 
+
+### Steps 1-4 Components: 
+
+* Needs to be able to access wizard on state in the reducer. 
+
+* Connect the updateWizard action creator to the components. 
+
+* Be sure to update all four of the components for Steps 1-4 with these changes. 
+
+
+### Step 5 Component: 
+
+* Needs to be able to access wizard on state in the reducer.
+
+* Connect the updateWizard, createProperty, resetWizard action creators to the component.
+
