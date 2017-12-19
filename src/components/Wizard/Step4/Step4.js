@@ -52,4 +52,11 @@ class Step4 extends Component {
   }
 }
 
-export default connect( state => ({ wizard: state.wizard }), { updateWizard } )( Step4 );
+function mapStateToProps(state) {
+  const { wizard } = state
+  return {
+    wizard
+  }
+}
+
+export default connect( mapStateToProps, { updateWizard } )( Step4 );
