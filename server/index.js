@@ -28,7 +28,6 @@ app.use( session({
   saveUninitialized: false
 }));
 
-app.use( require(`./middlewares/auth`) );
 app.use( express.static(`${__dirname}/../build`) );
 
 
@@ -37,6 +36,8 @@ app.post('/api/auth/login', user_controller.login);
 app.post('/api/auth/register', user_controller.register);
 app.post('/api/auth/logout', user_controller.logout);
 
+
+app.use( require(`./middlewares/auth`) );
 // PROPERTY LISTINGS ENDPOINTS
 app.post('/api/properties/', property_controller.create);
 app.get('/api/properties/', property_controller.readAll);
