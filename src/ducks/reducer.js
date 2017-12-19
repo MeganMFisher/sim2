@@ -1,5 +1,4 @@
 import axios from "axios";
-import api from "../api";
 
 const initialState = {
   user: null,
@@ -80,7 +79,7 @@ export default ( state = initialState, action ) => {
 }
 
 export function login( obj, history ) {
-  const promise = axios.post( `${api.auth}/login`, obj ).then( response => {
+  const promise = axios.post( '/api/auth/login', obj ).then( response => {
     history.push('/dashboard');
     return response.data;
   });
@@ -92,7 +91,7 @@ export function login( obj, history ) {
 }
 
 export function register( obj, history ) {
-  const promise = axios.post( `${api.auth}/register`, obj ).then( response => {
+  const promise = axios.post( '/api/auth/register', obj ).then( response => {
     history.push('/dashboard');
     return response.data;
   });
@@ -104,7 +103,7 @@ export function register( obj, history ) {
 }
 
 export function logout( history ) {
-  const promise = axios.post( `${api.auth}/logout` ).then( () => {
+  const promise = axios.post( '/api/auth/logout' ).then( () => {
     history.push('/');
   });
 
@@ -115,7 +114,7 @@ export function logout( history ) {
 }
 
 export function getProperties( history ) {
-  const promise = axios.get( api.properties ).then( response => response.data )
+  const promise = axios.get( '/api/properties' ).then( response => response.data )
     .catch( () => history.push('/') );
 
   return {
@@ -125,7 +124,7 @@ export function getProperties( history ) {
 }
 
 export function createProperty( obj, history ) {
-  const promise = axios.post( api.properties, obj ).then( response => {
+  const promise = axios.post( '/api/properties', obj ).then( response => {
     history.push('/dashboard');
     return response.data;
   });
@@ -137,7 +136,7 @@ export function createProperty( obj, history ) {
 }
 
 export function deleteProperty( id ) {
-  const promise = axios.delete( `${api.properties}/${id}` ).then( response => response.data );
+  const promise = axios.delete( `/api/properties/${id}` ).then( response => response.data );
 
   return { 
     type: DELETE_PROPERTY,
@@ -146,7 +145,7 @@ export function deleteProperty( id ) {
 }
 
 export function filterProperties( amount ) {
-  const promise = axios.get( `${api.properties}/filter?amount=${amount}` ).then( response => response.data );
+  const promise = axios.get( `/api/properties/filter?amount=${amount}` ).then( response => response.data );
 
   return {
     type: FILTER_PROPERTIES,
