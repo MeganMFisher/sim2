@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Filter from "./Filter/Filter";
 
 import { Link } from "react-router-dom";
-import { logout, getProperties, deleteProperty, filterProperties } from "../../ducks/reducer";
-import { connect } from "react-redux";
+
 
 import Header from '../Header/Header';
 import Property from './Property/Property';
@@ -60,12 +59,5 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { user, properties } = state;
-  return {
-    user,
-    properties
-  }
-}
 
-export default connect( mapStateToProps, { logout, getProperties, deleteProperty, filterProperties } )( Dashboard );
+export default Dashboard;

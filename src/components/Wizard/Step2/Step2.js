@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { updateWizard } from "../../../ducks/reducer";
+
 
 import './Step2.css';
 
@@ -68,11 +67,5 @@ class Step2 extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { wizard } = state
-  return {
-    wizard
-  }
-}
 
-export default connect(mapStateToProps, { updateWizard } )( Step2 );
+export default Step2;

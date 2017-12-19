@@ -14,14 +14,7 @@ massive( process.env.CONNECTIONSTRING ).then( dbInstance => {
 })
 
 
-app.use(bodyParser.json());
-app.use(cors());
 
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}));
 
 app.use(express.static(`${__dirname}/../build`) );
 
@@ -30,13 +23,13 @@ app.post('/api/auth/login', user_controller.login);
 app.post('/api/auth/register', user_controller.register);
 app.post('/api/auth/logout', user_controller.logout);
 
-var authMiddleware = require(`./middlewares/auth`)
+
  
 // PROPERTY ENDPOINTS
-app.post('/api/properties/', authMiddleware, property_controller.create);
-app.get('/api/properties/', authMiddleware, property_controller.readAll);
-app.delete('/api/properties/:id', authMiddleware,property_controller.delete);
-app.get('/api/properties/filter', authMiddleware,property_controller.filter);
+app.post('/api/properties/', property_controller.create);
+app.get('/api/properties/',  property_controller.readAll);
+app.delete('/api/properties/:id', property_controller.delete);
+app.get('/api/properties/filter', property_controller.filter);
 
 
 app.listen( process.env.PORT, () => { console.log(`Server listening on port ${ process.env.PORT}`); } );

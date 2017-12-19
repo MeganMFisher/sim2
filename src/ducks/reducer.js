@@ -26,16 +26,6 @@ const GET_PROPERTIES = "GET_PROPERTIES";
 const CREATE_PROPERTY = "CREATE_PROPERTY";
 const DELETE_PROPERTY = "DELETE_PROPERTY";
 
-// filterProperties: 
-const FILTER_PROPERTIES = "FILTER_PROPERTIES";
-
-// updateWizard: 
-const UPDATE_WIZARD = "UPDATE_WIZARD";
-
-// resetWizard: 
-const RESET_WIZARD = "RESET_WIZARD";
-
-
 
 export default ( state = initialState, action ) => {
   const { payload } = action;
@@ -62,28 +52,6 @@ export default ( state = initialState, action ) => {
     case DELETE_PROPERTY + '_FULFILLED':
       return Object.assign({}, state, { properties: payload });
 
-    // filterProperties case: 
-    case FILTER_PROPERTIES + '_FULFILLED':
-      return Object.assign({}, state, { properties: payload });
-
-
-    // updateWizard case:
-    case UPDATE_WIZARD: {
-      let newState = Object.assign({}, state);
-      for( var i in payload ) {
-        newState.wizard[i] = payload[i];
-      }
-      return newState;
-    }
-
-    // resetWizard case:
-    case RESET_WIZARD: {
-      let newState = Object.assign({}, state);
-      for( var j in newState.wizard ) {
-        newState.wizard[j] = null;
-      }
-      return newState;
-    }
 
     default: return state;
   }
@@ -152,31 +120,5 @@ export function deleteProperty( id ) {
   return { 
     type: DELETE_PROPERTY,
     payload: promise
-  };
-}
-
-//filterProperties Action Creator: 
-export function filterProperties( amount ) {
-  const promise = axios.get( `/api/properties/filter?amount=${amount}` ).then( response => response.data );
-
-  return {
-    type: FILTER_PROPERTIES,
-    payload: promise
-  };
-}
-
-// upddateWizard Action Creator: 
-export function updateWizard( obj ) {
-  return {
-    type: UPDATE_WIZARD,
-    payload: obj
-  };
-}
-
-// resetWizard Action Creator: 
-export function resetWizard() {
-  return {
-    type: RESET_WIZARD,
-    payload: null
   };
 }
