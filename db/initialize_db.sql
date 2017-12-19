@@ -1,12 +1,14 @@
--- CREATE DATABASE properties;
 
--- Connect to the properties database before running the next command.
--- \c properties;
+CREATE TABLE IF NOT EXISTS Users ( UserId SERIAL PRIMARY KEY, Username TEXT);
 
-CREATE TABLE IF NOT EXISTS Users ( UserId SERIAL PRIMARY KEY, Username TEXT, Password TEXT );
+-- Alter the users table here: 
+ALTER TABLE Users 
+ADD Password TEXT;
 
 INSERT INTO Users ( Username, Password ) VALUES ( 'test', 'test' );
 
+
+-- Add the properties table here: 
 CREATE TABLE IF NOT EXISTS Properties (
   PropertyId SERIAL PRIMARY KEY,
   UserId INT,
