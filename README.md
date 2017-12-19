@@ -64,13 +64,13 @@
 
 ### Dashboard Component: 
 
-* Needs to be able to access the users and properties on state in the reducer. 
+* Needs to be able to access the users and properties on state in the reducer. (Write a function directly above your export default to do this)
 
 * connect the logout, getProperties, deleteProperty, filterProperties action creators to the dashboard component. 
 
 ### Steps 1-4 Components: 
 
-* Needs to be able to access wizard on state in the reducer. 
+* Needs to be able to access the wizard object on state in the reducer. 
 
 * Connect the updateWizard action creator to the components. 
 
@@ -79,7 +79,7 @@
 
 ### Step 5 Component: 
 
-* Needs to be able to access wizard on state in the reducer.
+* Needs to be able to access the wizard object on state in the reducer.
 
 * Connect the updateWizard, createProperty, resetWizard action creators to the component.
 
